@@ -6,17 +6,20 @@
         <p>Stages</p>
       </div>
       <div class="form-container">
-        <form>
+        <form @submit.prevent="signupSubmit">
           <h1>Sign up</h1>
           <div class="names">
-            <input type="text" name="firstName" id="firstName" placeholder="First name*">
-            <input type="text" name="lastName" id="lastName" placeholder="Last name*">
+            <input type="text" name="firstName" id="firstName" placeholder="First name*" required v-model="fName">
+            <input type="text" name="lastName" id="lastName" placeholder="Last name*" required v-model="lName">
           </div>
-          <input type="text" name="email" id="email" placeholder="Email*">
-          <input type="password" name="password" id="password" placeholder="Choose password*">
+          <input type="email" name="email" id="email" placeholder="Email*" required v-model="email">
+          <input type="password" name="password" id="password" placeholder="Choose password*" required v-model="pWord">
           <p class="password-msg">Password must be at least 8 characters long.</p>
+
           <button type="submit">Sign up</button>
-          <p class="alt">Already a member? <a @click="switchToSignIn">Sign in</a></p>
+
+          <p class="alt">Already a member? <a @click="switchToSignIn">Sign In</a></p>
+          <p class="err-msg" v-show="errMsg">Axios engaged: {{errMsg}}</p>
         </form>
       </div>
     </div>
@@ -25,13 +28,53 @@
 </template>
 
 <script>
+import axios from 'axios'
 import ImageSection from '@/components/ImageSection.vue'
 export default {
   name: 'Sign up',
   components: { ImageSection },
+  data(){
+    return {
+      fName: '',
+      lName: '',
+      email: '',
+      pWord: '',
+      errMsg: null
+    }
+  },
   methods: {
     switchToSignIn(){
       this.$router.push({ name: 'SignIn'})
+      // submit form and serve on heroku
+    },
+    signupSubmit(e){
+      this.errMsg = null
+
+      let formData = {
+        firstName: this.fName,
+        lastName: this.lName,
+        email: this.email,
+        password: this.pWord
+      }
+      axios({
+        url: 'http://receive-my-form-data.com/isidore',
+        method: 'post',
+        headers: {
+          'Content-type': 'text/json'
+        },
+        data: formData
+      }).then(res => {
+        console.log(res)
+        this.$router.push({ name: 'Dashboard' })
+      })
+      .catch(err => {
+        console.log(err)
+        this.errMsg = 'CATCH BLOCK ERROR: Non-existent URL!'
+        setTimeout(() => {
+          this.errMsg = null
+        }, 2000)
+        e.target.reset()
+      })
     }
   }
 }
@@ -91,6 +134,10 @@ export default {
       text-decoration: underline;
       cursor: pointer;
     }
+  }
+  p.err-msg{
+    margin: 0;
+    color: red;
   }
   button{
     width: 100%;

@@ -15,7 +15,7 @@
         <Skew class="three"
             :first="{ img: require('@/assets/images/guy-desk.jpg'), alt: 'Random guy seating at a desk' }"
             :second="{ color: 'rgba(0, 0, 242, 0.7)' }"
-            :third="{ color: null, top: null }"
+            :third="{ color: 'rgba(0, 0, 242, 0.7)', top: 10 }"
         />
     </div>
 </template>
@@ -90,9 +90,11 @@ export default {
   .image-section{
     h2{
       font-size: 1.5rem;
+      width: 50%;
     }
     p{
       font-size: 0.7rem;
+      width: 85%;
     }
     .skew-container.one{
       left: -10%;
@@ -102,7 +104,7 @@ export default {
     }
     .skew-container.three{
       display: block;
-      right: -10%;
+      right: -5%;
       top: 3%;
     }
   }

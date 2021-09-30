@@ -2,20 +2,20 @@
   <div class="sign-in">
     <h1>Sign in Page</h1>
     <router-link to="/">Back to Sign up</router-link>
-    <Skew 
-      :first="{
-        img: require('@/assets/images/photo-man.jpg'),
-        alt: 'Random guy taking a picture' 
-      }"
-      :second="{
-        color: 'yellow' 
-      }"
-      :third="{
-        color: 'yellow',
-        top: 20
-      }"
-    />
   </div>
+  <Skew
+    :first="{
+      img: require('@/assets/images/photo-man.jpg'),
+      alt: 'Random guy taking a picture'
+    }"
+    :second="{
+      color: 'yellow'
+    }"
+    :third="{
+      color: 'yellow',
+      top: 20
+    }"
+  />
 </template>
 
 <script>
@@ -26,13 +26,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sign-in{
   position: relative;
-  .container{
+}
+.skew-container{
     right: 0;
+    top: 5%;
     // this is to style the container of the skew component
   }
-}
 
 </style>
