@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/ocity-task/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/ocity-task/' : '/'
 }
