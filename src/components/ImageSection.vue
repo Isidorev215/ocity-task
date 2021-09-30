@@ -4,17 +4,17 @@
         <p>Discover new skills, meet passionate teachers and become a part of the most helpful community of creatives in the world.</p>
         <Skew class="one"
             :first="{ img: require('@/assets/images/photo-man.jpg'), alt: 'Random guy taking a picture' }"
-            :second="{ color: 'steelblue' }"
-            :third="{ color: 'steelblue', top: 40 }"
-        />  
+            :second="{ color: 'rgb(44, 33, 248)' }"
+            :third="{ color: 'rgb(44, 33, 248)', top: 60 }"
+        />
         <Skew class="two"
             :first="{ img: null, alt: null }"
             :second="{ color: 'rgb(255, 196, 0)' }"
-            :third="{ color: 'rgb(255, 196, 0)', top: 15 }"
+            :third="{ color: 'rgb(255, 196, 0)', top: 20 }"
         />
         <Skew class="three"
             :first="{ img: require('@/assets/images/guy-desk.jpg'), alt: 'Random guy seating at a desk' }"
-            :second="{ color: 'rgb(0, 72, 255)' }"
+            :second="{ color: 'rgba(0, 0, 242, 0.7)' }"
             :third="{ color: null, top: null }"
         />
     </div>
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 .image-section{
-  position: relative;  
+  position: relative;
   flex: 0.8;
   background: url('../assets/images/bg-2.jpg') no-repeat center;
   background-size: cover;
@@ -51,7 +51,60 @@ export default {
     font-size: 0.5rem;
   }
   .skew-container{
-      display: none;
+    display: none;
+  }
+}
+@media screen and (min-width: 376px){
+  .image-section{
+    .two{
+      display: block;
+      top: -20%;
+      right: 5%;
+    }
+  }
+}
+@media screen and (min-width: 576px){
+    .image-section{
+      flex: 1;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 15px;
+      h2{
+        font-size: 1.5rem;
+      }
+      p{
+        font-size: 0.5rem;
+      }
+      .skew-container.one{
+        display: block;
+        bottom: 9%;
+        left: -15%;
+      }
+      .skew-container.two{
+        top: 2%;
+        left: -25%;
+      }
+    }
+}
+@media screen and (min-width: 768px){
+  .image-section{
+    h2{
+      font-size: 1.5rem;
+    }
+    p{
+      font-size: 0.7rem;
+    }
+    .skew-container.one{
+      left: -10%;
+    }
+    .skew-container.two{
+      left: -15%;
+    }
+    .skew-container.three{
+      display: block;
+      right: -10%;
+      top: 3%;
+    }
   }
 }
 </style>

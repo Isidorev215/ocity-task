@@ -8,8 +8,10 @@
       <div class="form-container">
         <form>
           <h1>Sign up</h1>
-          <input type="text" name="firstName" id="firstName" placeholder="First name*">
-          <input type="text" name="lastName" id="lastName" placeholder="Last name*">
+          <div class="names">
+            <input type="text" name="firstName" id="firstName" placeholder="First name*">
+            <input type="text" name="lastName" id="lastName" placeholder="Last name*">
+          </div>
           <input type="text" name="email" id="email" placeholder="Email*">
           <input type="password" name="password" id="password" placeholder="Choose password*">
           <p class="password-msg">Password must be at least 8 characters long.</p>
@@ -76,7 +78,7 @@ export default {
   input{
     width: 100%;
     border: 1px solid gray;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     padding: 2%;
     border-radius: 3px;
   }
@@ -87,6 +89,7 @@ export default {
     font-size: 0.5rem;
     a{
       text-decoration: underline;
+      cursor: pointer;
     }
   }
   button{
@@ -97,6 +100,54 @@ export default {
     font-size: 0.5rem;
     color: white;
     background-color: rgba(43, 43, 255, 0.8);
+  }
+}
+@media screen and (min-width: 576px){
+  .sign-up-pane{
+    flex-direction: row;
+    .form-section{
+      flex: 2;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 15px;
+      padding-top: 0;
+      justify-content: center;
+      .logo{
+        flex: 0.5;
+      }
+      .form-container{
+        flex: 5;
+        display: flex;
+      }
+    }
+    .form-section .form-container form{
+      flex: 2;
+      input::placeholder, p, button{
+        font-size: 0.5rem;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .sign-up-pane{
+    .form-section{
+      flex: 1;
+    }
+    .form-section .form-container form{
+      h1{
+        font-size: 1.2rem;
+      }
+      .names{
+        display: flex;
+        justify-content: space-between;
+        input{
+          width: 49%;
+        }
+      }
+      input::placeholder, p, button{
+        font-size: 0.6rem;
+      }
+    }
   }
 }
 </style>

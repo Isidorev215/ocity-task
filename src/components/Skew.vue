@@ -17,8 +17,8 @@ export default {
 
 <style lang="scss">
 .skew-container{
-    width: 25vw;
-    height: 30vh;
+    width: 15vw;
+    height: 15vh;
     position: absolute;
     .card{
         height: 100%;
@@ -49,10 +49,22 @@ export default {
         width: 15%;
         height: 45%;
         z-index: 3;
-        right: 0;
+        right: 20%;
         // top: 20%;
         border-radius: 3px;
         transform: skewY(20deg);
     }
+}
+@media screen and (min-width: 576px){
+  .skew-container{
+    width: 25vw;
+    height: 25vh;
+  }
+}
+@media screen and (min-width: 768px){
+  .skew-container{
+    width: 20vw;
+    height: 25vh;
+  }
 }
 </style>
